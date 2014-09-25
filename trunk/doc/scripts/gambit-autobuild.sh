@@ -11,7 +11,7 @@
 # along with this software.
 # If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-REPOSITORY_URL=http://svn.code.sourceforge.net/p/gambitchess/code
+REPOSITORY_URL=http://svn.code.sourceforge.net/p/gambitchess/code/trunk
 
 cd "`dirname "$0"`"
 
