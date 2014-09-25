@@ -1,3 +1,14 @@
+# Written by Jelle Geerts (jellegeerts@gmail.com).
+#
+# To the extent possible under law, the author(s) have dedicated all
+# copyright and related and neighboring rights to this software to
+# the public domain worldwide. This software is distributed without
+# any warranty.
+#
+# You should have received a copy of the CC0 Public Domain Dedication
+# along with this software.
+# If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+
 # This script can be executed by a Python interpreter for either version 2 or 3 of the language.
 
 # Generates a C header with an array of movement information for every valid board delta value and
