@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="84.947739"
+   id="svg1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Anonymous_Chess_symbols_set_1-filled.svg"
+   sodipodi:version="0.32"
+   width="78.234558"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0"
+   inkscape:export-filename="C:\joanna\Gfx\drawings_vector\admin\thumbs\Igor Krizanovskij\chess_set_symbols_igor_k_01_ok.png"
+   inkscape:export-xdpi="51.457458"
+   inkscape:export-ydpi="51.457458">
+  <metadata
+     id="metadata3">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title />
+        <dc:description />
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li />
+            <rdf:li>game</rdf:li>
+            <rdf:li>chess</rdf:li>
+            <rdf:li>symbols</rdf:li>
+            <rdf:li>board</rdf:li>
+            <rdf:li>recreation</rdf:li>
+            <rdf:li>fonts</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://www.openclipart.org">
+            <dc:title>Igor Krizanovskij</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Igor Krizanovskij</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Igor Krizanovskij</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:date />
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain" />
+        <dc:language>en</dc:language>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 187.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1052.3622 : 187.5 : 1"
+       inkscape:persp3d-origin="526.18109 : 125 : 1"
+       id="perspective20" />
+  </defs>
+  <sodipodi:namedview
+     bordercolor="#666666"
+     borderopacity="1.0"
+     id="base"
+     inkscape:current-layer="layer3"
+     inkscape:cx="4.1818993"
+     inkscape:cy="42.097465"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:window-height="778"
+     inkscape:window-width="1270"
+     inkscape:window-x="2"
+     inkscape:window-y="0"
+     inkscape:zoom="5.4697356"
+     pagecolor="#ffffff"
+     showgrid="false"
+     inkscape:window-maximized="0" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="inner"
+     style="display:inline">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m 38.59375,3.59375 c -0.111971,5.6310036 -9.644928,2.9221392 -1.46875,6.8125 2.408028,2.611642 1.317207,7.770363 -2.21875,9.34375 -4.626732,3.371373 -3.159851,9.437213 -4,14.3125 C 24.72821,29.013056 15.404448,24.578385 8.0625,30 0.79396127,34.394418 1.4858687,45.002472 6.9312326,50.709756 13.138897,58.079762 14.729164,67.620692 15.875,76.78125 c 3.763971,5.707503 12.185005,4.726516 18.25,5.46875 9.320444,-0.428821 20.291398,1.436821 28.0625,-4.59375 1.505399,-8.614778 1.891482,-17.880525 7.894592,-24.865859 C 74.464488,47.318885 78.108665,38.966403 73.1875,32.75 67.969834,26.006468 57.411615,25.976965 51.21875,31.46875 c -3.376068,2.805479 -5.306736,-1.84657 -4.5,-4.84375 1.086718,-6.39763 -8.729905,-7.669064 -6.9375,-14.25 C 40.612247,9.6545635 49.147864,6.5859608 41,7.125 40.466242,6.5388009 39.341447,0.39416505 38.59375,3.59375 z"
+       id="path3808"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="outer"
+     transform="translate(-70.539484,-214.20189)"
+     style="display:inline">
+    <path
+       d="m 109.65676,299.14963 c -17.12725,0 -25.819982,-2.88321 -26.078178,-8.64969 -0.430339,-7.91812 -1.764372,-13.89975 -4.002098,-17.94489 -0.94673,-1.63526 -2.280763,-3.61479 -4.002099,-5.93859 -2.926261,-3.87299 -4.561526,-7.14352 -4.905793,-9.81159 -0.08607,-0.68853 -0.129108,-1.42011 -0.129108,-2.19471 0,-5.42218 2.280763,-9.68247 6.842288,-12.78088 1.118874,-0.68854 2.280763,-1.24797 3.485709,-1.6783 4.561524,-1.63527 9.080014,-1.37707 13.555488,0.77461 1.63526,0.77458 3.270524,1.80738 4.905788,3.09838 l 0.12911,0.12911 c 0,-1.80741 0.08605,-3.7439 0.2582,-5.80948 0,-0.60249 0.301223,-1.42011 0.903693,-2.45292 1.37707,-2.23772 3.01233,-4.0021 4.90579,-5.29309 0.34426,-0.17214 0.68853,-0.38731 1.0328,-0.6455 l 0,-3.0984 -5.29309,-3.09839 0,-4.64759 4.7767,0 1.6783,-4.90582 3.87299,0 1.6783,4.90582 4.7767,0 0,4.64759 -5.29309,3.09839 0,3.0984 c 4.47546,2.84019 6.75622,5.68039 6.84228,8.52059 0.17213,1.72133 0.2582,3.6148 0.2582,5.6804 l 0.12911,-0.12911 c 5.42219,-4.56153 11.10259,-6.02465 17.04118,-4.38938 1.54921,0.43031 3.01234,1.07581 4.3894,1.9365 4.81972,2.92625 7.27263,7.27262 7.35871,13.03907 0,3.44268 -1.72134,7.53084 -5.16401,12.26449 -2.8402,3.95906 -4.60456,6.84231 -5.2931,8.6497 -1.46311,3.87298 -2.3238,8.86485 -2.58199,14.97559 -0.17212,5.76648 -8.86486,8.64969 -26.07818,8.64969 m 0,-43.50667 3.7439,-5.93859 c 0.60247,-1.291 1.07582,-2.49593 1.42008,-3.6148 0.17215,-0.60246 0.25822,-1.85042 0.25822,-3.7439 0,-5.07791 -1.76437,-7.6169 -5.29312,-7.6169 -3.70085,0 -5.55129,2.53899 -5.55129,7.6169 0,1.89348 0.0861,3.14144 0.2582,3.7439 0.68853,2.3238 2.15167,5.07794 4.3894,8.26239 0.51641,0.60247 0.77461,1.0328 0.77461,1.291 m 34.46968,-0.2582 c 0,-3.87299 -1.29099,-6.84228 -3.87302,-8.90788 -2.15165,-1.80741 -4.6906,-2.7111 -7.61689,-2.7111 -3.70084,0 -7.70295,1.89345 -12.00628,5.68039 -5.07793,4.3894 -7.96116,10.328 -8.6497,17.81579 0,0.60246 1.59223,1.29099 4.77669,2.0656 3.70087,0.68854 9.98373,1.0328 18.84859,1.0328 l 5.8095,-7.746 c 1.8074,-2.75412 2.71111,-5.16399 2.71111,-7.2296 m -34.46968,17.42849 c -2.15168,0.94675 -8.69274,1.76437 -19.623193,2.4529 -1.635264,0.0861 -2.969298,0.17213 -4.002099,0.2582 0.860679,3.27053 1.420106,6.88532 1.678301,10.84439 5.938593,-1.89347 13.254251,-2.84019 21.946991,-2.84019 8.86485,0 16.18052,0.94672 21.94699,2.84019 0.2582,-4.30333 0.81763,-7.91813 1.6783,-10.84439 l -19.10681,-1.5492 c -1.63526,-0.25819 -3.14142,-0.64549 -4.51848,-1.1619 M 75.187082,255.38476 c 0,2.66808 2.108639,6.71321 6.325897,12.13539 1.032801,1.291 1.764372,2.23775 2.194691,2.84021 l 2.323798,0 c 8.86486,0 15.319862,-0.60246 19.364992,-1.80741 1.291,-0.34426 1.9365,-0.77458 1.9365,-1.29099 -0.68854,-7.48779 -3.57177,-13.42639 -8.649693,-17.81579 -4.217262,-3.78694 -8.21936,-5.68039 -12.006301,-5.68039 -1.204924,0 -2.495922,0.25819 -3.872991,0.7746 -3.442672,0.86066 -5.76647,3.14142 -6.971395,6.84229 l -0.645498,3.4857 0,0.51639 m 34.469678,39.11728 c 8.09025,0 13.6846,-0.51641 16.78299,-1.54919 0.7746,-0.25822 1.1619,-0.55945 1.1619,-0.90372 0,-2.23773 -5.93859,-3.35659 -17.81581,-3.35659 -4.56152,0 -8.99394,0.30125 -13.297264,0.90371 -3.184481,0.51639 -4.776708,1.33403 -4.776708,2.45288 0,1.291 5.077935,2.10865 15.233792,2.45291 1.0328,0 1.93649,0 2.7111,0"
+       id="path1721"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

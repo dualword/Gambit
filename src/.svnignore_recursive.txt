@@ -1,0 +1,2 @@
+moc_*.cxx*
+svn_revision_number.h

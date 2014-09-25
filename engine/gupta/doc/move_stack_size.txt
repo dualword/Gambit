@@ -1,0 +1,48 @@
+This document explains how the maximum size for the move stack (for move generation) can be
+calculated. The calculation is very simple and yields a number that theoretically is too high, but
+that doesn't matter. Better to have a simple, reliable calculation, instead of a possibly buggy one
+or one of which it is hard to prove the correctness of.
+
+Maximum number of moves for a queen:
+    27 moves (from one of the 4 center squares, 7 in 3 directions, 6 in the other)
+
+Maximum number of moves for a rook:
+    14 moves
+
+Maximum number of moves for a bishop:
+    13 moves (from one of the 4 center squares, 7 in 1 direction, 6 in the other)
+
+Maximum number of moves for a knight:
+    8 moves
+
+Maximum number of moves for a king:
+    10 moves (1 in all directions, 2 castling moves)
+
+Special moves to account for:
+    - Castling kingside, castling queenside.
+(En Passant is omitted from the list on purpose, see below for the reason.)
+
+When we treat all pawns as queens, one side can at maximum have the following pieces:
+    - 9 queens
+    - 2 rooks
+    - 2 bishops
+    - 2 knights
+    - 1 king
+
+The special move En Passant doesn't have to be accounted for, and to say that, we don't even have
+to compare the maximum number of moves a pawn can make with the maximum number of moves a queen can
+make, because a pawn can't move backwards, and a queen can, so that move already covers the En
+Passant move.
+
+The pieces in the list above can generate the most number of moves, and here's how many:
+    323 = 9 (queens) * 27 +
+          2 (rooks) * 14 +
+          2 (bishops) * 13 +
+          2 (knights) * 8 +
+          1 (king) * 10
+
+So for a maximum search depth of 8, the move stack used by the move generator should be at least
+'2584 = 323 * 8' elements in size. One can then easily index this move stack using the current
+height of the game tree (remember, it changes while the search algorithm is executing) to get the
+first element for that height (to store the moves that are going to be generated, or to enumerate
+the moves generated for that height).
