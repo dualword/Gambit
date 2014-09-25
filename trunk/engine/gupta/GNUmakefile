@@ -9,11 +9,13 @@
 # along with this software.
 # If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-# About this Makefile:
-#   - The Makefile works and has been tested on these systems:
+# About this makefile:
+#   - The makefile is written in GNU make syntax. You may have to use GNU's
+#     'make' program to be able to use this makefile.
+#   - The makefile has been tested to work on these systems:
 #     - FreeBSD
 #     - Linux
-#   - The Makefile can benefit from 'make -j N' (where N is an
+#   - The makefile can benefit from 'make -j N' (where N is an
 #     integer).
 #   - When no build targets are specified on the 'make' command line,
 #     the 'debug' target will be built.
