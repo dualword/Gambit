@@ -1,0 +1,5 @@
+_*
+gupta
+gupta.exe
+gupta_except.txt
+gupta_log.txt

@@ -1,0 +1,4 @@
+This is the list of people who contributed to the project:
+*******************************************************************************
+
+Tranberry - oskar@tranberry.se [graphics]

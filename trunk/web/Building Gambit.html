@@ -1,0 +1,58 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Building Gambit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <style type="text/css">
+    body {
+        font-family: 'DejaVu Serif', 'Georgia', 'Times New Roman', serif;
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>Building Gambit</h1>
+
+    <h2>A guide to automatically building Gambit on Unix-like operating systems</h2>
+    <p>
+      This guide will explain how to automatically get Gambit ready for use
+      on your Unix-like operating system. After a few simple manual steps,
+      the majority of the work will be carried out by a script. This includes
+      automatically installing the required software for building Gambit,
+      downloading the Gambit source code (it will be placed in the same
+      directory as the script), and building the source code (this produces
+      the executable software).
+    </p>
+    <p><strong>Note:</strong> if the images below don't exactly match how things look on your system, don't worry, your system should not differ much.</p>
+    <p>First, you'll have to download the <a href="http://svn.code.sourceforge.net/p/gambitchess/code/doc/scripts/gambit-autobuild.sh">gambit-autobuild.sh</a> script, and save it in a location that you can easily find using the File Manager.</p>
+    <p>Next, you have to mark the script as being executable:</p>
+    <ol>
+      <li>
+        Open the File Manager and browse to the location where you saved the script.
+        <p><img src="images/autobuild-visual-instructions/file_manager.png" alt="" /></p>
+      </li>
+      <li>
+        Right-click the script, and click Properties.
+        <p><img src="images/autobuild-visual-instructions/properties.png" alt="" /></p>
+      </li>
+      <li>Click the Permissions tab <strong>(1)</strong>.</li>
+      <li>Check the checkbox that reads "Allow executing file as program" <strong>(2)</strong>.</li>
+    </ol>
+    <p>And lastly, you have to execute the script, and follow the instructions on the screen:</p>
+    <ol>
+      <li>Double-click the "gambit-autobuild.sh" script.</li>
+      <li>
+        Select "Run" (or "Run in Terminal", it shouldn't matter for this script).
+        <p><img src="images/autobuild-visual-instructions/run_script.png" alt="" /></p>
+      </li>
+      <li>Follow the instructions on the screen.</li>
+    </ol>
+
+    <div style="float: right; margin-top: 1em">
+      <a href="http://sourceforge.net/projects/gambitchess"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=331156&amp;type=9" width="80" height="15" alt="Get Gambit at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a>
+    </div>
+  </body>
+</html>

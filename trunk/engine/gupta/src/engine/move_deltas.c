@@ -1,0 +1,10 @@
+#include "move_deltas.h"
+
+static const s8 king_deltas[]   = {-0x01, +0x0F, +0x10, +0x11, +0x01, -0x0F, -0x10, -0x11, 0};
+static const s8 rook_deltas[]   = {-0x01, +0x10, +0x01, -0x10, 0};
+static const s8 bishop_deltas[] = {+0x0F, +0x11, -0x0F, -0x11, 0};
+static const s8 knight_deltas[] = {+0x0E, +0x1F, +0x21, +0x12, -0x0E, -0x1F, -0x21, -0x12, 0};
+
+const s8 *g_move_deltas[8] = {
+    0, 0, knight_deltas, king_deltas, 0, bishop_deltas, rook_deltas, king_deltas
+};
