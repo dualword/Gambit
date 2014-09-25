@@ -103,7 +103,7 @@ install_required_packages_if_necessary() {
 
     local package_names_deb="libqt4-dev cmake make gcc g++ subversion"
     local package_names_rpm="qt qt-devel cmake make gcc gcc-c++ subversion"
-    local package_names_freebsd="qt4 cmake gmake gcc subversion"
+    local package_names_freebsd="qt4 cmake gmake subversion"
 
     are_required_deb_packages_consistent() {
         local statuses
