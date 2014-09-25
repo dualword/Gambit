@@ -237,9 +237,17 @@ if [ $code_may_be_outdated -eq 1 ]; then
     fi
 fi
 
+which gmake >/dev/null 2>&1
+[ $? -ne 0 ]
+gmake_installed=$?
+
 # Build the chess engine Gupta.
 cd engine/gupta || abort
-gmake release || abort
+if [ $gmake_installed -ne 0 ]; then
+    gmake release || abort
+else
+    make release || abort
+fi
 cd "$OLDPWD" || abort
 
 # Build Gambit.
