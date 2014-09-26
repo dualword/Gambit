@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 /* Buffer size for the argument list buffer passed to exec(). */
 #define ARGV_BUF_SIZE 262144
@@ -323,6 +324,8 @@ int procspawn_wait(pspwn_pid_t pid, unsigned int msecs)
 
     do
     {
+        struct timespec ts;
+
         /* We must not use waitpidrs(), as the specified process should not be
          * our child process (instead, it should be adopted by 'init', since we
          * double fork()-ed). */
@@ -334,7 +337,9 @@ int procspawn_wait(pspwn_pid_t pid, unsigned int msecs)
             return 0;
         }
 
-        usleep(500);
+        ts.tv_sec = 0;
+        ts.tv_nsec = 500000;
+        nanosleep(&ts, NULL);
 
         if (msecs != -1U)
         {
