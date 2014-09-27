@@ -117,7 +117,7 @@ debug:
 	@# Clean up object files, so the source directories aren't
 	@# littered with them. They're removed anyway the next time we
 	@# build.
-	$(S)$(MAKE) -s clean_objs
+	$(S)$(MAKE) $(MAKE_VERBOSITY) clean_objs
 
 # Alias for the 'debug' target.
 .PHONY: Debug
@@ -133,7 +133,7 @@ release:
 	@# Clean up object files, so the source directories aren't
 	@# littered with them. They're removed anyway the next time we
 	@# build.
-	$(S)$(MAKE) -s clean_objs
+	$(S)$(MAKE) $(MAKE_VERBOSITY) clean_objs
 
 # Alias for the 'release' target.
 .PHONY: Release
