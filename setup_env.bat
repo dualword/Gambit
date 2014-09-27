@@ -23,6 +23,6 @@ rem macro.
 doskey c=cmake -G "MinGW Makefiles" -D "CMAKE_BUILD_TYPE=Debug" . $*
 doskey cr=cmake -G "MinGW Makefiles" -D "CMAKE_BUILD_TYPE=Release" . $*
 doskey b=mingw32-make $*
-doskey r=Gambit $*
+doskey r=gambitchess $*
 doskey br=mingw32-make ^&^& Gambit $*
 doskey cl=mingw32-make clean $*
