@@ -33,7 +33,7 @@ set(GAMBIT_BINARY_NAME "gambitchess")
 # Example values:
 #   ON
 #   OFF
-option(CONFIG_OFFICIAL_VERSION "whether this build is an official version" OFF)
+option(CONFIG_OFFICIAL_VERSION "whether this build is an official version" ON)
 message(STATUS "Value for CONFIG_OFFICIAL_VERSION: ${CONFIG_OFFICIAL_VERSION}")
 
 # Description:
