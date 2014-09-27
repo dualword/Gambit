@@ -19,6 +19,7 @@
 
 #include "ce_mediator.h"
 #include "compiler_specific.h"
+#include "sleep/sleep.h"
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
@@ -578,14 +579,7 @@ static int e_wait_and_discard(struct cem_data *cemd)
                 break;
             else
             {
-                /* Wait 10 milliseconds, as waiting less than that may be problematic (impossible)
-                 * on some platforms (at least, with the usleep() function), meaning that even if
-                 * we specify a time of less than 10 milliseconds, we will actually wait 10
-                 * milliseconds or a bit longer. That in turn would make this function slower than
-                 * was superficially expected, even though the intent of waiting less was to make
-                 * it faster.
-                 */
-                usleep(10000);
+                sleep_ms(10);
                 continue;
             }
         }
