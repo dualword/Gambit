@@ -17,7 +17,7 @@
 ;#define MyAppVersion          "0.0"
 #define MyAppPublisher        "Jelle Geerts"
 #define MyAppURL              "http://purl.org/net/gambit"
-#define MyAppExeName          "gambit.exe"
+#define MyAppExeName          "gambitchess.exe"
 #define MyAppShortName        "Gambit"
 
 [Setup]
