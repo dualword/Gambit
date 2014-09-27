@@ -10,8 +10,8 @@
 # If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
 # About this makefile:
-#   - The makefile is written in GNU make syntax. You may have to use GNU's
-#     'make' program to be able to use this makefile.
+#   - The makefile is written in GNU make syntax. You may have to use
+#     the GNU make program to be able to use this makefile.
 #   - The makefile has been tested to work on these systems:
 #     - FreeBSD
 #     - Linux
@@ -30,6 +30,11 @@
 #     different directory. That way, debug objects can never end up in
 #     a release binary.
 
+# Verbosity switch.
+# One can specify VERBOSE=1 on the make command line to enable verbose
+# output.
+VERBOSE=0
+
 CC ?= gcc
 LD ?= ld
 MAKE ?= make
@@ -39,17 +44,29 @@ STRIP ?= strip
 OUTPUT = gupta
 
 CFLAGS += \
--Wall -Wextra -Werror -Wshadow -Wpointer-arith -Wcast-align \
--Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls \
--Wnested-externs -Wstrict-prototypes -Wformat=2 -Wundef \
--pedantic -pedantic-errors -Wa,--fatal-warnings
+	-Wall -Wextra -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings \
+	-Wmissing-prototypes -Wmissing-declarations -Wredundant-decls \
+	-Wnested-externs -Wstrict-prototypes -Wformat=2 -Wundef -pedantic
+
+# "Developer mode" switch.
+# If the file '_GNUmakefile-DeveloperMode' exists, it is assumed that
+# one is developing code, and so wants extra compilation flags to be
+# turned on, like -Werror and -pedantic-errors, such that compilation
+# warnings are treated as errors.
+# Non-developers such as packagers don't have to do anything, as they
+# most likely won't have the file '_GNUmakefile-DeveloperMode', and so
+# compilation flags like -Werror won't get in their way while
+# compiling.
+ifneq ("$(wildcard _GNUmakefile-DeveloperMode)","")
+	CFLAGS += -Werror -pedantic-errors -Wa,--fatal-warnings
+endif
 
 # Debug build flags.
-CFLAGS_DEBUG = -O -g -D DEBUG
+CFLAGS_DEBUG = -O1 -g -D DEBUG
 LDFLAGS_DEBUG =
 
 # Release build flags.
-CFLAGS_RELEASE = -O3 -D NDEBUG
+CFLAGS_RELEASE = -O2 -D NDEBUG
 LDFLAGS_RELEASE =
 
 CC_WRAPPER = $(CC) $(CFLAGS) $(LDFLAGS) $(INCS) $^ -c -o $@
@@ -77,58 +94,58 @@ OBJS = $(patsubst %.c,%.o,$(SRCS))
 
 INCS = -I src
 
+ifeq ($(VERBOSE),1)
+	S=
+	MAKE_VERBOSITY=
+else
+	# Prepend commands with an @ so 'make' doesn't echo the
+	# commands.
+	S=@
+
+	# Pass -s to 'make' for silent operation.
+	MAKE_VERBOSITY=-s
+endif
+
 # This is the first target, and therefore the default target 'make'
 # will process.
 .PHONY: debug
 debug:
-	@$(MAKE) -s clean
-	@$(MAKE) -s msg_debug
-	@$(MAKE) -s $(OUTPUT) "CFLAGS=$(CFLAGS) $(CFLAGS_DEBUG)" "LDFLAGS=$(LDFLAGS) $(LDFLAGS_DEBUG)"
-	@$(MAKE) -s msg_ok
+	$(S)$(MAKE) $(MAKE_VERBOSITY) clean
+	$(S)echo Compiling debug build ...
+	$(S)$(MAKE) $(MAKE_VERBOSITY) $(OUTPUT) "CFLAGS=$(CFLAGS) $(CFLAGS_DEBUG)" "LDFLAGS=$(LDFLAGS) $(LDFLAGS_DEBUG)"
+	$(S)echo OK.
 	@# Clean up object files, so the source directories aren't
 	@# littered with them. They're removed anyway the next time we
 	@# build.
-	@$(MAKE) -s clean_objs
+	$(S)$(MAKE) -s clean_objs
 
 # Alias for the 'debug' target.
 .PHONY: Debug
 Debug: debug
 
-.PHONY: msg_debug
-msg_debug:
-	@echo Compiling debug build ...
-
 .PHONY: release
 release:
-	@$(MAKE) -s clean
-	@$(MAKE) -s msg_release
-	@$(MAKE) -s $(OUTPUT) "CFLAGS=$(CFLAGS) $(CFLAGS_RELEASE)" "LDFLAGS=$(LDFLAGS) $(LDFLAGS_RELEASE)"
-	@$(STRIP) $(OUTPUT)
-	@$(MAKE) -s msg_ok
+	$(S)$(MAKE) $(MAKE_VERBOSITY) clean
+	$(S)echo Compiling release build ...
+	$(S)$(MAKE) $(MAKE_VERBOSITY) $(OUTPUT) "CFLAGS=$(CFLAGS) $(CFLAGS_RELEASE)" "LDFLAGS=$(LDFLAGS) $(LDFLAGS_RELEASE)"
+	$(S)$(STRIP) $(OUTPUT)
+	$(S)echo OK.
 	@# Clean up object files, so the source directories aren't
 	@# littered with them. They're removed anyway the next time we
 	@# build.
-	@$(MAKE) -s clean_objs
+	$(S)$(MAKE) -s clean_objs
 
 # Alias for the 'release' target.
 .PHONY: Release
 Release: release
 
-.PHONY: msg_release
-msg_release:
-	@echo Compiling release build ...
-
-.PHONY: msg_ok
-msg_ok:
-	@echo OK.
-
 .PHONY: clean
 clean: clean_objs
-	@$(RM) $(OUTPUT)
+	$(RM) $(OUTPUT)
 
 .PHONY: clean_objs
 clean_objs:
-	@$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
 %.o: %.c
 	$(call CC_WRAPPER)
