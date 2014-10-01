@@ -58,7 +58,8 @@ CFLAGS += \
 # compilation flags like -Werror won't get in their way while
 # compiling.
 ifneq ("$(wildcard _GNUmakefile-DeveloperMode)","")
-	CFLAGS += -Werror -pedantic-errors -Wa,--fatal-warnings
+	CFLAGS += -Werror -pedantic-errors
+	ASFLAGS += -Wa,--fatal-warnings
 endif
 
 # Debug build flags.
@@ -69,7 +70,7 @@ LDFLAGS_DEBUG =
 CFLAGS_RELEASE = -O2 -D NDEBUG
 LDFLAGS_RELEASE =
 
-CC_WRAPPER = $(CC) $(CFLAGS) $(LDFLAGS) $(INCS) $^ -c -o $@
+CC_WRAPPER = $(CC) $(CFLAGS) $(ASFLAGS) $(LDFLAGS) $(INCS) $^ -c -o $@
 CC_LINK_WRAPPER = $(CC) $(LDFLAGS) $^ -o $@
 
 SRCS = \
