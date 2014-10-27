@@ -17,7 +17,7 @@ cd /d "%~dp0"
 
 set rev=
 
-for /f "tokens=1,*" %%i in ('svn info') do (
+for /f "tokens=1,*" %%i in ('svn info 2^>nul') do (
     if "%%i" == "Revision:" (
         set rev=%%j
         goto :cont
@@ -27,10 +27,11 @@ for /f "tokens=1,*" %%i in ('svn info') do (
 
 if not "%rev%" == "" goto :cont
 echo SVN revision could not be extracted from the output of 'svn info'.>&2
+echo (This is normal when building from a source tarball/archive/package.)>&2
 goto :exit
 :cont
 
-set file=src\svn_revision_number.h
+set file=revision_number.h
 
 rem Create an empty file and check for errors, so we know whether it's safe to proceed. Avoids
 rem multiple errors to be printed (due to failing `echo >> "%file%"` commands).
@@ -45,11 +46,11 @@ echo Failed creating file '%file%'.>&2
 goto :exit
 :cont
 
-echo #ifndef SVN_REVISION_NUMBER_H>>"%file%"
-echo #define SVN_REVISION_NUMBER_H>>"%file%"
+echo #ifndef REVISION_NUMBER_H>>"%file%"
+echo #define REVISION_NUMBER_H>>"%file%"
 echo.>>"%file%"
-echo #define SVN_REVISION_NUMBER %rev% >>"%file%"
-echo #define SVN_REVISION_NUMBER_STRING "%rev%">>"%file%"
+echo #define REVISION_NUMBER %rev% >>"%file%"
+echo #define REVISION_NUMBER_STRING "%rev%">>"%file%"
 echo.>>"%file%"
 echo #endif>>"%file%"
 

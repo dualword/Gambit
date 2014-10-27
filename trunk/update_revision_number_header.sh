@@ -13,20 +13,21 @@
 
 cd "`dirname "$0"`"
 
-rev=`svn info | grep '^Revision: ' | cut -d ' ' -f 2`
+rev=`svn info 2>/dev/null | grep '^Revision: ' | cut -d ' ' -f 2`
 
 if [ "$rev" = '' ]; then
     echo "SVN revision could not be extracted from the output of 'svn info'." >&2
+    echo "(This is normal when building from a source tarball/archive/package.)" >&2
     exit 1
 fi
 
 header="\
-#ifndef SVN_REVISION_NUMBER_H
-#define SVN_REVISION_NUMBER_H
+#ifndef REVISION_NUMBER_H
+#define REVISION_NUMBER_H
 
-#define SVN_REVISION_NUMBER $rev
-#define SVN_REVISION_NUMBER_STRING \"$rev\"
+#define REVISION_NUMBER $rev
+#define REVISION_NUMBER_STRING \"$rev\"
 
 #endif"
 
-echo "$header" > src/svn_revision_number.h
+echo "$header" > revision_number.h

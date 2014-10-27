@@ -1,3 +1,14 @@
+Version 1.0.1 (2014-10-27)
+==========================
+
+* Building from a source tarball/archive/package failed due to a
+  source code control system directory (like '.svn' or '.git')
+  being missing. Such a directory was being used to generate a
+  revision number header file (.h), so the revision number can be
+  displayed in the About box.
+  Source archives will now include such a generated revision number
+  header, so it doesn't need to be generated.
+
 Version 1.0 (2014-09-27)
 ========================
 

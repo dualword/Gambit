@@ -6,3 +6,4 @@ Makefile
 gambitchess.exe
 gambitchess
 ui_*.h
+revision_number.h
