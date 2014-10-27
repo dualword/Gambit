@@ -12,6 +12,7 @@
 */
 
 #include "UI.hh"
+#include "../revision_number.h"
 #include "BoardView.hh"
 #include "BusyIndicatorWidget.hh"
 #include "GraphicsScene.hh"
@@ -23,7 +24,6 @@
 #include "ProxyAuthenticationDialog.hh"
 #include "SpriteManager.hh"
 #include "ToolBar.hh"
-#include "svn_revision_number.h"
 #include "Core/debugf.h"
 #include "Core/Event.hh"
 #include "Core/GambitApplication.hh"
@@ -479,7 +479,7 @@ void UI::showAbout()
     const QString version_part;
 #endif // !defined(CONFIG_OFFICIAL_VERSION)
 
-    const QString &revision_part = tr("revision") + " " + SVN_REVISION_NUMBER_STRING;
+    const QString &revision_part = tr("revision") + " " + REVISION_NUMBER_STRING;
 
     QMessageBox::about(
         this,

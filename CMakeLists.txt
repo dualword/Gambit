@@ -20,6 +20,8 @@ project(Gambit)
 # directory containing 'gambit'.
 set(GAMBIT_BINARY_NAME "gambitchess")
 
+set(REVISION_NUMBER_HEADER "revision_number.h")
+
 # Description:
 #   Whether this build is an official version.
 #
@@ -271,15 +273,20 @@ else(WIN32)
         src/sdk/procspawn/procspawn_unix.c)
 endif(WIN32)
 
+# It may be that the script failed but the revision number header file exists
+# anyway. This is the case for source code releases of the program, which
+# contain the header file, as it cannot be generated, as source code releases
+# don't contain source code control system directories (such as '.svn' or
+# '.git').
 if(WIN32)
-    execute_process(COMMAND "svn_update_revision_number_header.bat" RESULT_VARIABLE script_result)
-    if(NOT(script_result EQUAL 0))
-        message(FATAL_ERROR "Failed to execute 'svn_update_revision_number_header.bat'.")
+    execute_process(COMMAND "update_revision_number_header.bat" RESULT_VARIABLE script_result)
+    if(NOT(EXISTS ${REVISION_NUMBER_HEADER}))
+        message(FATAL_ERROR "'update_revision_number_header.bat' failed to create '${REVISION_NUMBER_HEADER}'")
     endif()
 else(WIN32)
-    execute_process(COMMAND "sh" "svn_update_revision_number_header.sh" RESULT_VARIABLE script_result)
-    if(NOT(script_result EQUAL 0))
-        message(FATAL_ERROR "Failed to execute 'svn_update_revision_number_header.sh'.")
+    execute_process(COMMAND "sh" "update_revision_number_header.sh" RESULT_VARIABLE script_result)
+    if(NOT(EXISTS ${REVISION_NUMBER_HEADER}))
+        message(FATAL_ERROR "'update_revision_number_header.sh' failed to create '${REVISION_NUMBER_HEADER}'")
     endif()
 endif(WIN32)
 
