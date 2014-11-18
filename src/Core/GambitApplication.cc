@@ -18,7 +18,6 @@
 #include "ResourcePath.hh"
 #include "sdk/NamedLock/NamedLock.h"
 #include "Utils/Qt.hh"
-#include "View/MissingFileDialog.hh"
 #include <QDir>
 #include <QMessageBox>
 #include <cassert>
