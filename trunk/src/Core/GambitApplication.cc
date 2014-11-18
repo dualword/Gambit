@@ -226,7 +226,6 @@ QLocale::Language GambitApplication::language() const
 
 void GambitApplication::loadLanguage(QLocale::Language _language)
 {
-    bool languageIsBuiltIn = _language == QLocale::English;
     const QString &languageId = Utils::Qt::languageIdString(_language);
 
     const QString &qtNlsFilePath = ResourcePath::mkQString("nls/qt_" + languageId + ".qm");
@@ -236,14 +235,6 @@ void GambitApplication::loadLanguage(QLocale::Language _language)
     appTranslator.load(gambitNlsFilePath);
 
     language_ = _language;
-
-    if (!languageIsBuiltIn)
-    {
-        // Only warn if our own translation file doesn't exist.
-        // It's normal if one of Qt's translation files are missing, as only a couple of languages
-        // are supported by Qt.
-        MissingFileDialog::instance().addIfNonExistent(gambitNlsFilePath);
-    }
 }
 
 bool GambitApplication::notify(QObject *receiver, QEvent *_event)
