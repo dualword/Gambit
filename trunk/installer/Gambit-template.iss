@@ -12,7 +12,7 @@
 ; Inno Setup script.
 
 #define MyAppName             "Gambit"
-; MyAppVersion is defined by the script that generates Inno Setup
+; MyAppVersion is defined by the script that generates the Inno Setup
 ; script from _this_ template file.
 ;#define MyAppVersion          "0.0"
 #define MyAppPublisher        "Jelle Geerts"
