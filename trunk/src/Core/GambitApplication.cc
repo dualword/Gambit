@@ -43,7 +43,7 @@ const char GambitApplication::configFileName[] = APP_NAME ".ini";
 
 GambitApplication::GambitApplication(int &p_argc, char **p_argv)
     : QApplication(p_argc, p_argv),
-      language_(QLocale::system().language()),
+      language_(QLocale::English),
       haveDeterminedConfigDirToUse(false)
 {
     // Retrieve the application directory path as early as possible during application startup,
@@ -225,15 +225,18 @@ QLocale::Language GambitApplication::language() const
 
 void GambitApplication::loadLanguage(QLocale::Language _language)
 {
+    const bool languageIsBuiltIn = _language == QLocale::English;
+
     const QString &languageId = Utils::Qt::languageIdString(_language);
 
     const QString &qtNlsFilePath = ResourcePath::mkQString("nls/qt_" + languageId + ".qm");
-    qtTranslator.load(qtNlsFilePath);
+    (void)qtTranslator.load(qtNlsFilePath);
 
     const QString &gambitNlsFilePath = ResourcePath::mkQString("nls/Gambit_" + languageId + ".qm");
-    appTranslator.load(gambitNlsFilePath);
+    const bool ok = appTranslator.load(gambitNlsFilePath);
 
-    language_ = _language;
+    if (ok || languageIsBuiltIn)
+        language_ = _language;
 }
 
 bool GambitApplication::notify(QObject *receiver, QEvent *_event)
