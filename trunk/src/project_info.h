@@ -21,12 +21,12 @@
 // For the (automatic) update system.
 // An update should be available if the integer retrieved by the update
 // checker is greater than this integer.
-#define APP_INTERNAL_REVISION   7
+#define APP_INTERNAL_REVISION   8
 
 #define APP_NAME                "Gambit"
 #define APP_HOMEPAGE            "http://purl.org/net/gambit"
-#define APP_FILEVERSION         1, 0, 3, 0
-#define APP_FILEVERSION_STR     "1.0.3"
+#define APP_FILEVERSION         1, 0, 4, 0
+#define APP_FILEVERSION_STR     "1.0.4"
 #define APP_FILETYPE            VFT_APP
 
 #endif

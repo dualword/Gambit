@@ -35,27 +35,31 @@
 #include <cstdio>
 #endif
 
-static void qMsgHandler(QtMsgType type, const char *msg)
+static void qMessageHandler(QtMsgType type, const QMessageLogContext &ctx, const QString &msg)
 {
     switch (type)
     {
     case QtDebugMsg:
-        fprintf(stderr, "QtDebugMsg: %s\n", msg);
+        fprintf(stderr, "QtDebugMsg: %s (%s:%u, %s)\n", qPrintable(msg), ctx.file, ctx.line, ctx.function);
+        break;
+
+    case QtInfoMsg:
+        fprintf(stderr, "QtInfoMsg: %s (%s:%u, %s)\n", qPrintable(msg), ctx.file, ctx.line, ctx.function);
         break;
 
     case QtWarningMsg:
-        fprintf(stderr, "QtWarningMsg: %s\n", msg);
+        fprintf(stderr, "QtWarningMsg: %s (%s:%u, %s)\n", qPrintable(msg), ctx.file, ctx.line, ctx.function);
         break;
 
     case QtCriticalMsg:
-        fprintf(stderr, "QtCriticalMsg: %s\n", msg);
+        fprintf(stderr, "QtCriticalMsg: %s (%s:%u, %s)\n", qPrintable(msg), ctx.file, ctx.line, ctx.function);
         break;
 
     case QtFatalMsg:
     {
-        fprintf(stderr, "QtFatalMsg: %s\n", msg);
+        fprintf(stderr, "QtFatalMsg: %s (%s:%u, %s)\n", qPrintable(msg), ctx.file, ctx.line, ctx.function);
         abort();
-        break;
+        // NOTREACHED
     }
     }
 }
@@ -94,10 +98,9 @@ int main(int argc, char **argv)
             fprintf(stderr, "Could not set disposition of SIGPIPE to SIG_IGN.\n");
 #endif /* !defined(_WIN32) */
 
-        qInstallMsgHandler(qMsgHandler);
+        qInstallMessageHandler(qMessageHandler);
 
         GambitApplication app(argc, argv);
-        QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
         if (!QDir().exists(app.configDirPath()))
         {

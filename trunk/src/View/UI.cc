@@ -43,6 +43,7 @@
 #include <QLabel>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QMimeData>
 #include <QMouseEvent>
 #include <QNetworkProxy>
 #include <QPainter>
@@ -490,7 +491,6 @@ void UI::showAbout()
         "</p>"
         "<p>" +
             tr("Thanks to:") + "<br/>"
-            "Bart Beukman<br/>"
             "Oskar Lindqvist<br/>"
             "Sindwiller"
         "</p>"

@@ -1,2 +1,3 @@
 moc_*.cxx*
+moc_*.cpp*
 revision_number.h

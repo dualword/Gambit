@@ -65,7 +65,7 @@ public:
 #ifdef _WIN32
         DefaultGraphicsUseHardwareAccelerationWhenAvailable = true,
 #else /* !defined(_WIN32) */
-        /* Unfortunately, on Linux, the default OpenGL drivers are often buggy, and it's safer to
+        /* Unfortunately, on Unices, the default OpenGL drivers are often buggy, and it's safer to
          * not use OpenGL (even when available). So, for now, on Unices, we don't use OpenGL by
          * default. Users may still enable it in the options though, to try it out, and disable it
          * when it doesn't.

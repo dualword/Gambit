@@ -10,7 +10,7 @@ rem You should have received a copy of the CC0 Public Domain Dedication
 rem along with this software.
 rem If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-for /f "delims=" %%i in ('dir /s /b moc_*.cxx* 2^>nul') do (
+for /f "delims=" %%i in ('dir /s /b moc_*.cpp* moc_*.cxx* 2^>nul') do (
     del "%%i" || (set file=%%i& goto :error)
 )
 
