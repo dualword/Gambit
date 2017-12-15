@@ -27,8 +27,8 @@
 #include <QAction>
 #include <QCloseEvent>
 #include <QDesktopServices>
-#include <QFSFileEngine>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QMessageBox>
 #include <QUrl>
 #include <cassert>
@@ -407,13 +407,16 @@ void GameController::newHumanGame()
 
 void GameController::openGame()
 {
-    QString fileName = QFileDialog::getOpenFileName(&ui, tr("Open game"),
-                                                    fileDialogDirectory,
-                                                    tr("PGN files (*.pgn)") + ";;" + tr("All files (*)"));
+    const QString fileName =
+        QFileDialog::getOpenFileName(
+            &ui, tr("Open game"),
+            fileDialogDirectory,
+            tr("PGN files (*.pgn)") + ";;" + tr("All files (*)"));
+
     if (fileName.isEmpty())
         return;
 
-    fileDialogDirectory = QFSFileEngine(fileName).fileName(QFSFileEngine::PathName);
+    fileDialogDirectory = QFileInfo(fileName).absolutePath();
 
     openGame(fileName);
 }
@@ -481,13 +484,15 @@ bool GameController::saveGame()
 
 bool GameController::saveGameAs()
 {
-    QString fileName = QFileDialog::getSaveFileName(
-        &ui, tr("Save game as"), fileDialogDirectory,
-        tr("PGN files (*.pgn)") + ";;" + tr("All files (*)"));
+    QString fileName =
+        QFileDialog::getSaveFileName(
+            &ui, tr("Save game as"), fileDialogDirectory,
+            tr("PGN files (*.pgn)") + ";;" + tr("All files (*)"));
+
     if (fileName.isEmpty())
         return false;
 
-    fileDialogDirectory = QFSFileEngine(fileName).fileName(QFSFileEngine::PathName);
+    fileDialogDirectory = QFileInfo(fileName).absolutePath();
 
     if (!fileName.endsWith(".pgn"))
     {

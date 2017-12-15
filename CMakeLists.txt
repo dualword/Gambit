@@ -9,7 +9,7 @@
 # along with this software.
 # If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 
 project(Gambit)
 
@@ -107,11 +107,16 @@ endif()
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
-include(cmake/functions/remove_debug_libraries_from_list.cmake)
+# Let CMake automatically link the executable to
+# the libqtmain.a library (with which Qt provides WinMain())
+# when we link to the QtCore "IMPORTED target".
+if(POLICY CMP0020)
+    cmake_policy(SET CMP0020 NEW)
+endif()
 
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wnested-externs -Wstrict-prototypes -Wbad-function-cast -Wformat=2 -Wundef -pedantic -Wno-long-long")
 
-set(CMAKE_CXX_FLAGS "-std=c++98 -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Wredundant-decls -Wformat=2 -Wundef -pedantic -Wno-long-long")
+set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Wredundant-decls -Wformat=2 -Wundef -pedantic -Wno-long-long")
 
 if(DEVELOPER_MODE)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -pedantic-errors")
@@ -142,14 +147,6 @@ if(NOT CMAKE_BUILD_TYPE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 include_directories(src src/sdk)
-
-# temporary workaround until CMake supports RC files for the MinGW toolchain
-if(MINGW)
-    set(CMAKE_RC_COMPILER_INIT windres)
-    enable_language(RC)
-    set(CMAKE_RC_COMPILE_OBJECT
-        "<CMAKE_RC_COMPILER> -O coff <FLAGS> <DEFINES> -o <OBJECT> <SOURCE>")
-endif(MINGW)
 
 # target Gambit
 #******************************************************************************
@@ -290,41 +287,24 @@ else(WIN32)
     endif()
 endif(WIN32)
 
-# Important: do not add QtOpenGL as component, otherwise the GL libraries will
-# be added to link against using link flags instead of filenames. This would
-# fail on FreeBSD, where the OpenGL libraries are not in the standard library
-# directories. To sidestep this problem, we manually link the OpenGL libraries
-# by their filenames.
-find_package(Qt4 REQUIRED QtCore QtGui QtNetwork)
-if(QT_QTOPENGL_INCLUDE_DIR)
-    # Only use the QT_QTOPENGL_INCLUDE_DIR variable if it's not empty, as otherwise CMake will
-    # abort with an error, saying that we are using a variable that's set to NOTFOUND. And we don't
-    # want that, since OpenGL is optional.
-    include_directories(SYSTEM ${QT_QTOPENGL_INCLUDE_DIR})
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Gui REQUIRED)
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Network REQUIRED)
+find_package(Qt5OpenGL) # OPTIONAL
 
-    # The code will use Qt's OpenGL interface, so the QtOpenGL library must also be available.
-    if(NOT QT_QTOPENGL_LIBRARY)
-        message(FATAL_ERROR "System in an inconsistent state: the Qt OpenGL headers are available, but not the link libraries.")
-    endif(NOT QT_QTOPENGL_LIBRARY)
-
+if(Qt5OpenGL_FOUND)
+    set(QT5_OPENGL_TARGET_LINK_LIBRARY "Qt5::OpenGL")
     add_definitions(-D CONFIG_QT_OPENGL)
-endif(QT_QTOPENGL_INCLUDE_DIR)
-include(${QT_USE_FILE})
-qt4_wrap_cpp(MOC_SRCS ${MOC_HDRS})
-qt4_wrap_ui(UI_HDRS ${UIS})
+endif(Qt5OpenGL_FOUND)
 
-# Uncomment/comment the following lines to enable/disable linking only against
-# Qt's release libraries, which may be useful when creating a debug build of
-# the program for distribution (since the release libraries are smaller).
-message(WARNING "Unconditionally linking against Qt release libraries.")
-remove_debug_libraries_from_list(QT_LIBRARIES)
-list(REMOVE_ITEM QT_LIBRARIES "optimized")
-if(QT_QTOPENGL_LIBRARY)
-    remove_debug_libraries_from_list(QT_QTOPENGL_LIBRARY)
-    list(REMOVE_ITEM QT_QTOPENGL_LIBRARY "optimized")
-endif(QT_QTOPENGL_LIBRARY)
+# This helps qt5_wrap_cpp(), otherwise you can get
+# "Error: Undefined interface" when using
+# the Q_INTERFACES macro.
+include_directories(${Qt5Widgets_INCLUDE_DIRS})
 
-add_executable(${GAMBIT_BINARY_NAME} ${GAMBIT_SRCS} ${MOC_SRCS} ${UI_HDRS})
+qt5_wrap_cpp(MOC_SRCS ${MOC_HDRS})
+qt5_wrap_ui(UI_HDRS ${UIS})
 
 find_package(OpenGL) # OPTIONAL
 if(OPENGL_INCLUDE_DIR)
@@ -333,7 +313,9 @@ if(OPENGL_INCLUDE_DIR)
     # that, since OpenGL is optional.
     include_directories(SYSTEM ${OPENGL_INCLUDE_DIR})
 endif(OPENGL_INCLUDE_DIR)
-target_link_libraries(${GAMBIT_BINARY_NAME} ${QT_LIBRARIES} ${QT_QTOPENGL_LIBRARY} ${OPENGL_LIBRARIES})
+
+add_executable(${GAMBIT_BINARY_NAME} ${GAMBIT_SRCS} ${MOC_SRCS} ${UI_HDRS})
+target_link_libraries(${GAMBIT_BINARY_NAME} Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network ${QT5_OPENGL_TARGET_LINK_LIBRARY} ${OPENGL_LIBRARIES})
 
 if(WIN32 AND CMAKE_BUILD_TYPE MATCHES Release)
     set_target_properties(${GAMBIT_BINARY_NAME} PROPERTIES LINK_FLAGS_RELEASE -mwindows)

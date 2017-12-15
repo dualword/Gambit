@@ -10,11 +10,12 @@ rem You should have received a copy of the CC0 Public Domain Dedication
 rem along with this software.
 rem If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-set CMAKE_DIR=C:\Dev\cmake-2.8.10.2-win32-x86
-set MINGW4_DIR=C:\Dev\MinGW-4.8.2
-set QTDIR=C:\Dev\Qt\4.8.6
-rem set BOOST_ROOT=Z:\Dev\libraries\boost\1_46_1
-set PATH=%CMAKE_DIR%\bin;%MINGW4_DIR%\bin;%QTDIR%\bin;%PATH%
+set "CMAKE_DIR=C:\Dev\cmake-3.10.0-win32-x86"
+set "MINGW4_DIR=C:\Qt\Qt5.9.3\Tools\mingw530_32"
+set "QTDIR=C:\Qt\Qt5.9.3\5.9.3\mingw53_32"
+rem set "CMAKE_PREFIX_PATH=%QTDIR%;%CMAKE_PREFIX_PATH%"
+rem set "BOOST_ROOT=Z:\Dev\libraries\boost\1_46_1"
+set "PATH=%CMAKE_DIR%\bin;%MINGW4_DIR%\bin;%QTDIR%\bin;%PATH%"
 
 rem The $* token at the end of each doskey macro is replaced by
 rem everything following the macro name when entered on the command
